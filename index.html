@@ -124,7 +124,6 @@
         #photo-carousel.dragging { cursor: grabbing; }
         #photo-carousel.dragging .carousel-item { transition: none !important; }
         
-        /* --- ESTILOS POLAROID Y MÁSCARAS --- */
         .section-mask-top {
             position: absolute;
             top: 0; left: 0;
@@ -193,6 +192,25 @@
             .polaroid-card { max-width: 310px; padding: 12px 12px 75px 12px; }
             .polaroid-caption { font-size: 1.6rem; bottom: 25px; }
         }
+
+        /* Estilos Loader RSVP */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #828C6A;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop-in { animation: popIn 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.49); }
     </style>
 </head>
 <body class="font-sans text-wedding-text bg-wedding-bone smooth-scroll antialiased overflow-x-hidden">
@@ -359,11 +377,11 @@
                     </div>
                      <div class="max-w-5xl mx-auto bg-white p-4 md:p-5 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl border border-white text-center">
                          <div class="h-64 md:h-96 w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden mb-8 md:mb-10">
-                             <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://maps.google.com/maps?q=Parcelas%20Valle%20El%20Cristo,%20Parcela%2030,%20La%20Gonzalina,%20Rancagua&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                             <iframe width="100%" height="100%" frameborder="0" scrolling="no" src="https://maps.google.com/maps?q=Parcela%2030%2C%20La%20Gonzalina%2C%20Rancagua&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
                          </div>
                          <h3 class="font-serif text-xl md:text-2xl mb-2 text-wedding-text font-bold">Parcelas Valle El Cristo, Parcela 30</h3>
                          <p class="text-wedding-earth text-xs md:text-sm mb-8 md:mb-10 italic">La Gonzalina, Rancagua</p>
-                         <a href="https://www.google.com/maps/dir/?api=1&destination=Parcelas+Valle+El+Cristo,+Parcela+30,+La+Gonzalina,+Rancagua" target="_blank" class="inline-flex items-center bg-wedding-olive text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-[9px] md:text-[10px] uppercase tracking-[0.3em] shadow-xl"><i data-lucide="navigation" class="w-4 h-4 mr-2"></i> Abrir GPS</a>
+                         <a href="https://maps.google.com/?q=Parcelas+Valle+El+Cristo,+Parcela+30,+La+Gonzalina,+Rancagua" target="_blank" class="inline-flex items-center bg-wedding-olive text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-[9px] md:text-[10px] uppercase tracking-[0.3em] shadow-xl"><i data-lucide="navigation" class="w-4 h-4 mr-2"></i> Abrir GPS</a>
                      </div>
                  </section>
 
@@ -577,7 +595,7 @@
                              <div class="carousel-item"><img src="Imagen8.jpg" alt="5"></div>
                              <div class="carousel-item"><img src="Imagen9.jpg" alt="6"></div>
                              <div class="carousel-item"><img src="Imagen10.jpg" alt="7"></div>
-			     <div class="carousel-item"><img src="Imagen11.jpg" alt="8"></div>
+                             <div class="carousel-item"><img src="Imagen11.jpg" alt="8"></div>
                              <div class="carousel-item"><img src="Imagen12.jpg" alt="9"></div>
                              <div class="carousel-item"><img src="Imagen13.jpg" alt="10"></div>
                              <div class="carousel-item"><img src="Imagen14.jpg" alt="11"></div>
@@ -585,14 +603,13 @@
                              <div class="carousel-item"><img src="Imagen16.jpg" alt="13"></div>
                              <div class="carousel-item"><img src="Imagen17.jpg" alt="14"></div>
                              <div class="carousel-item"><img src="Imagen18.jpg" alt="15"></div>
-			     <div class="carousel-item"><img src="Imagen19.jpg" alt="16"></div>
+                             <div class="carousel-item"><img src="Imagen19.jpg" alt="16"></div>
                          </div>
                      </div>
                  </section>
 
                 <section id="musica" class="py-24 bg-wedding-bone text-center px-6">
                     <div class="max-w-4xl mx-auto flex flex-col items-center">
-                        
                         <div class="mb-10">
                             <span class="inline-block p-4 rounded-full bg-wedding-soft-coral/20 mb-4 animate-fade-up">
                                 <i data-lucide="youtube" class="w-10 h-10 text-wedding-soft-coral"></i>
@@ -601,37 +618,29 @@
                                 Playlist Colaborativa
                             </h2>
                         </div>
-                
                         <p class="font-serif text-lg md:text-xl italic mb-12 max-w-2xl opacity-70 animate-fade-up">
                             ¡Queremos bailar tus canciones favoritas!<br>
                             Añade tus temas preferidos a nuestra lista de YouTube Music.
                         </p>
-                        
                         <div class="mb-12 animate-fade-up">
                             <div class="vinyl-record animate-spin-slow mx-auto flex items-center justify-center" 
                                  style="width: 180px; height: 180px; background: radial-gradient(circle, #333 0%, #111 30%, #000 100%); border-radius: 50%; border: 2px solid #222; position: relative;">
-                                
                                 <div class="vinyl-label" 
                                      style="width: 70px; height: 70px; background-color: #DFA8A4; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; font-family: 'Great Vibes', cursive; z-index: 2; border: 2px solid rgba(0,0,0,0.1);">
-                                    
                                     <span style="font-size: 1rem; line-height: 1;">D & C</span>
-                                    
                                     <div style="width: 8px; height: 8px; background: #111; border-radius: 50%; margin: 4px 0; border: 1px solid rgba(255,255,255,0.2);"></div>
-                                    
                                     <span style="font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: bold;">
                                         2026
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        
                         <a href="https://music.youtube.com/playlist?list=PLubgL9Zxh3IFlD8CJpPngJRUrb3481wba&si=CvhOtEqfVA3qQdnp" 
                            target="_blank" 
                            class="group relative inline-flex items-center justify-center bg-wedding-soft-coral text-white px-12 py-6 rounded-full text-sm font-bold uppercase tracking-[0.2em] shadow-xl hover:scale-105 transition-all animate-fade-up hover:bg-wedding-coral">
                             <i data-lucide="music-2" class="w-6 h-6 mr-3"></i> 
                             Abrir YouTube Music
                         </a>
-                        
                     </div>
                 </section>
 
@@ -642,40 +651,40 @@
                             <span class="font-script text-5xl md:text-6xl text-wedding-olive block">R.S.V.P.</span>
                             <p class="font-serif text-wedding-earth italic mt-4 text-lg">Confirma tu asistencia por favor</p>
                         </div>
-                
+
                         <form id="rsvp-form" class="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-wedding-cream text-left relative overflow-hidden transition-all duration-500">
                             <div class="space-y-8 relative z-10">
                                 <div>
-                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1 text-wedding-text">Nombre y Apellido</label>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1">Nombre y Apellido</label>
                                     <input type="text" name="nombre_principal" required 
                                         class="w-full border-b border-stone-200 py-3 outline-none focus:border-wedding-olive bg-transparent text-lg font-serif transition-colors"
                                         placeholder="Tu nombre completo">
                                 </div>
-                
+
                                 <div>
-                                    <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1 text-wedding-text">¿Asistirás?</label>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1">¿Asistirás?</label>
                                     <div class="grid grid-cols-2 gap-4">
                                         <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all">
                                             <input type="radio" name="asistencia" value="si" required class="hidden peer" onchange="toggleAsistencia(true)">
                                             <div class="w-4 h-4 border border-wedding-olive rounded-full mr-3 peer-checked:bg-wedding-olive transition-all"></div>
-                                            <span class="font-serif text-wedding-text">Sí, asistiré</span>
+                                            <span class="font-serif">Sí, asistiré</span>
                                         </label>
                                         <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all">
                                             <input type="radio" name="asistencia" value="no" class="hidden peer" onchange="toggleAsistencia(false)">
                                             <div class="w-4 h-4 border border-wedding-olive rounded-full mr-3 peer-checked:bg-wedding-olive transition-all"></div>
-                                            <span class="font-serif text-wedding-text">No podré</span>
+                                            <span class="font-serif">No podré</span>
                                         </label>
                                     </div>
                                 </div>
-                
+
                                 <div id="section-si" class="hidden space-y-8 pt-4 border-t border-stone-50">
                                     <div class="flex items-center justify-between p-4 bg-wedding-bone/50 rounded-2xl">
                                         <label class="font-serif italic text-lg text-wedding-text">¿Confirmas por alguien más?</label>
                                         <input type="checkbox" id="confirmar-mas" class="w-6 h-6 accent-wedding-olive cursor-pointer" onchange="toggleAcompanantes(this.checked)">
                                     </div>
                                     
-                                    <div id="wrapper-cantidad" class="hidden">
-                                        <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1 text-wedding-text">¿Cuántos adicionales?</label>
+                                    <div id="wrapper-cantidad" class="hidden animate-fade-in-up">
+                                        <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1">¿Cuántos adicionales?</label>
                                         <div class="grid grid-cols-4 gap-2">
                                             <button type="button" onclick="generateInputs(1)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">1</button>
                                             <button type="button" onclick="generateInputs(2)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">2</button>
@@ -685,12 +694,12 @@
                                         <div id="nombres-adicionales-container" class="mt-6 space-y-4"></div>
                                     </div>
                                 </div>
-                
+
                                 <div>
-                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1 text-wedding-text">Mensaje para los novios</label>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1">Mensaje para los novios</label>
                                     <textarea name="mensaje" rows="3" class="w-full border-b border-stone-200 py-2 outline-none focus:border-wedding-olive bg-transparent font-serif transition-colors resize-none" placeholder="Déjanos unas palabras..."></textarea>
                                 </div>
-                
+
                                 <button type="submit" id="submit-btn" class="w-full bg-wedding-olive text-white py-5 rounded-full font-serif uppercase tracking-widest text-xs shadow-xl flex items-center justify-center gap-2">
                                     <span id="btn-text">Confirmar Asistencia</span>
                                     <div id="btn-loader" class="loader hidden"></div>
@@ -699,17 +708,6 @@
                         </form>
                     </div>
                 </section>
-                
-                <div id="popup-overlay" class="fixed inset-0 z-[500] bg-black/40 backdrop-blur-sm flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-                    <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl text-center max-w-sm mx-4 animate-pop-in">
-                        <div class="w-20 h-20 bg-wedding-olive/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i data-lucide="check-circle" class="w-12 h-12 text-wedding-olive"></i>
-                        </div>
-                        <h3 class="font-script text-5xl text-wedding-olive mb-4 leading-tight">Confirmación Exitosa</h3>
-                        <div class="h-2 w-12 bg-wedding-olive/20 mx-auto mb-8 rounded-full"></div>
-                        <button onclick="closePopup()" class="w-full py-4 bg-wedding-olive text-white rounded-full font-serif uppercase tracking-widest text-[10px] shadow-lg">Cerrar</button>
-                    </div>
-                </div>
 
                 <section class="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-wedding-bone">
                     <img src="ImagenFinal.jpg" alt="Diego y Carin" class="absolute inset-0 w-full h-full object-cover z-0 scale-105">
@@ -730,21 +728,41 @@
         </div>
     </div>
 
+    <div id="popup-overlay" class="fixed inset-0 z-[500] bg-black/40 backdrop-blur-sm flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl text-center max-w-sm mx-4 animate-pop-in">
+            <div class="w-20 h-20 bg-wedding-olive/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle" class="w-12 h-12 text-wedding-olive"></i>
+            </div>
+            <h3 class="font-script text-5xl text-wedding-olive mb-4 leading-tight">Confirmación Exitosa</h3>
+            <div class="h-2 w-12 bg-wedding-olive/20 mx-auto mb-8 rounded-full"></div>
+            <button onclick="closePopup()" class="w-full py-4 bg-wedding-olive text-white rounded-full font-serif uppercase tracking-widest text-[10px] shadow-lg">Cerrar</button>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxaDm1iz9W2OEbR8ewLFtMEKLfxsGjfseh4uvFFaq0d68Xz_1YTRimIZ1G0-dN5Mfop/exec';
+        const form = document.getElementById('rsvp-form');
+        const btn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnLoader = document.getElementById('btn-loader');
+        const popup = document.getElementById('popup-overlay');
+        const rsvpContainer = document.getElementById('rsvp-container');
         const audio = document.getElementById('wedding-audio');
-        const btn = document.getElementById('music-toggle');
+        const musicBtn = document.getElementById('music-toggle');
         const countdownBox = document.getElementById('countdown-box');
         const countdownTitle = document.getElementById('countdown-title');
         const countdownContainer = document.getElementById('countdown');
         let isPlaying = false;
 
+        // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
         function toggleMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('translate-x-full');
             document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? 'auto' : 'hidden';
         }
 
+        // --- LÓGICA DE APERTURA ---
         function openInvitation() {
             const textoInstruccion = document.getElementById('instruccion-abrir');
             const innerLetter = document.querySelector('.envelope-letter');
@@ -769,34 +787,91 @@
              }, 1500);
         }
 
+        // --- LÓGICA RSVP ---
+        window.addEventListener('load', () => {
+            if (localStorage.getItem('boda_diego_carin_rsvp') === 'confirmado') {
+                mostrarMensajeYaConfirmado();
+            }
+        });
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+                .then(() => {
+                    localStorage.setItem('boda_diego_carin_rsvp', 'confirmado');
+                    showSuccess();
+                    setTimeout(mostrarMensajeYaConfirmado, 1500);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Hubo un error al enviar. Intenta de nuevo.');
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btnText.classList.remove('hidden');
+                    btnLoader.classList.add('hidden');
+                });
+        });
+
+        function mostrarMensajeYaConfirmado() {
+            if(!rsvpContainer) return;
+            rsvpContainer.innerHTML = `
+                <div class="animate-fade-in-up bg-white p-12 md:p-16 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-wedding-olive/10 text-center">
+                    <div class="w-24 h-24 bg-wedding-olive/5 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <i data-lucide="heart" class="w-12 h-12 text-wedding-olive fill-wedding-olive opacity-30"></i>
+                    </div>
+                    <h3 class="font-script text-5xl md:text-7xl text-wedding-olive mb-6">¡Gracias!</h3>
+                    <p class="font-serif text-xl md:text-2xl text-wedding-text italic mb-6">Ya has confirmado tu asistencia.</p>
+                    <div class="h-[1px] w-20 bg-wedding-olive/20 mx-auto mb-6"></div>
+                    <p class="font-serif text-wedding-earth uppercase tracking-[0.3em] text-xs md:text-base font-bold">¡Te esperamos con ansias!</p>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function showSuccess() {
+            popup.classList.remove('hidden');
+            setTimeout(() => popup.classList.add('opacity-100'), 10);
+            setTimeout(() => closePopup(), 4000);
+        }
+
+        function closePopup() {
+            popup.classList.remove('opacity-100');
+            setTimeout(() => popup.classList.add('hidden'), 300);
+        }
+
         function toggleAsistencia(asiste) {
-            const sectionSi = document.getElementById('section-si');
-            if (asiste) sectionSi.classList.remove('hidden');
-            else { sectionSi.classList.add('hidden'); document.getElementById('confirmar-mas').checked = false; toggleAcompanantes(false); }
+            const section = document.getElementById('section-si');
+            asiste ? section.classList.remove('hidden') : section.classList.add('hidden');
         }
 
         function toggleAcompanantes(show) {
             const wrapper = document.getElementById('wrapper-cantidad');
-            const container = document.getElementById('nombres-adicionales-container');
-            if (show) wrapper.classList.remove('hidden');
-            else { wrapper.classList.add('hidden'); container.innerHTML = ''; document.querySelectorAll('.num-btn').forEach(btn => btn.classList.remove('bg-wedding-olive', 'text-white')); }
+            show ? wrapper.classList.remove('hidden') : (wrapper.classList.add('hidden'), document.getElementById('nombres-adicionales-container').innerHTML = '');
         }
 
         function generateInputs(num) {
             const container = document.getElementById('nombres-adicionales-container');
-            container.innerHTML = `<p class="font-serif text-wedding-olive italic text-sm mb-2 animate-fade-in-up">Nombres de tus acompañantes:</p>`;
-            document.querySelectorAll('.num-btn').forEach((btn, idx) => {
-                if (idx + 1 === num) btn.classList.add('bg-wedding-olive', 'text-white');
-                else btn.classList.remove('bg-wedding-olive', 'text-white');
+            container.innerHTML = `<p class="font-serif text-wedding-olive italic text-sm mb-2">Nombres de tus acompañantes:</p>`;
+            document.querySelectorAll('.num-btn').forEach((b, i) => {
+                (i + 1 === num) ? b.classList.add('bg-wedding-olive', 'text-white') : b.classList.remove('bg-wedding-olive', 'text-white');
             });
             for (let i = 1; i <= num; i++) {
-                const div = document.createElement('div');
-                div.className = "animate-fade-in-up";
-                div.innerHTML = `<input type="text" name="acompanante_${i}" required class="w-full border-b border-stone-200 py-2 outline-none focus:border-wedding-olive bg-transparent text-base font-serif transition-colors" placeholder="Nombre completo del acompañante ${i}">`;
-                container.appendChild(div);
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.name = `acompanante_${i}`;
+                input.required = true;
+                input.placeholder = `Acompañante ${i}`;
+                input.className = "w-full border-b border-stone-200 py-2 outline-none focus:border-wedding-olive bg-transparent font-serif mb-2 transition-all";
+                container.appendChild(input);
             }
         }
 
+        // --- LÓGICA DE INTERSECCIÓN (ANIMACIONES SCROLL) ---
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = { root: null, rootMargin: '0px 0px -100px 0px', threshold: 0.1 };
             const revealCallback = (entries, observer) => {
@@ -829,10 +904,10 @@
                     }
                 });
             }, { threshold: 0.15, rootMargin: "0px 0px -100px 0px" });
-
             document.querySelectorAll('.polaroid-item').forEach(item => { polaroidObserver.observe(item); });
         });
 
+        // --- LÓGICA CARRUSEL ---
         const track = document.getElementById('photo-carousel');
         const initialSlides = Array.from(track.children);
         const originalCount = initialSlides.length;
@@ -853,6 +928,7 @@
             });
             const centerX = window.innerWidth / 2;
             const item = track.children[carouselIndex];
+            if(!item) return;
             const itemCenter = item.offsetLeft + (item.offsetWidth / 2);
             currentTranslate = centerX - itemCenter;
             prevTranslate = currentTranslate;
@@ -874,6 +950,7 @@
 
         function startAutoPlay() { clearInterval(autoPlayInterval); autoPlayInterval = setInterval(() => { carouselIndex++; updateCarousel(true); }, 3500); }
 
+        // --- LÓGICA CUENTA REGRESIVA Y STICKY ---
         window.addEventListener('scroll', () => {
             if (!countdownBox) return;
             const boxRect = countdownBox.getBoundingClientRect();
@@ -896,18 +973,20 @@
             if (countdownTitle) countdownTitle.style.opacity = progress >= 0.5 ? 0 : 1 - (progress * 2);
         });
 
-        const target = new Date("Feb 21, 2026 17:00:00").getTime();
+        const targetDate = new Date("Feb 21, 2026 17:00:00").getTime();
         function updateCounter() {
             const now = new Date().getTime();
-            const gap = target - now;
+            const gap = targetDate - now;
             const d = Math.floor(gap / (1000*60*60*24)), h = Math.floor((gap%(1000*60*60*24))/(1000*60*60)), m = Math.floor((gap%(1000*60*60))/(1000*60)), s = Math.floor((gap%(1000*60))/1000);
             if(countdownContainer) countdownContainer.innerHTML = `<div class="flex flex-col items-center"><span class="count-number block font-serif text-xl md:text-3xl font-bold">${d}</span><span class="count-label text-[8px] uppercase font-bold">Días</span></div><div class="flex flex-col items-center"><span class="count-number block font-serif text-xl md:text-3xl font-bold">${h}</span><span class="count-label text-[8px] uppercase font-bold">Hs</span></div><div class="flex flex-col items-center"><span class="count-number block font-serif text-xl md:text-3xl font-bold">${m}</span><span class="count-label text-[8px] uppercase font-bold">Min</span></div><div class="flex flex-col items-center"><span class="count-number block font-serif text-xl md:text-3xl font-bold">${s}</span><span class="count-label text-[8px] uppercase font-bold">Seg</span></div>`;
         }
         setInterval(updateCounter, 1000);
 
-        function updateMusicIcon() { btn.innerHTML = isPlaying ? '<i data-lucide="pause" class="w-5 h-5"></i>' : '<i data-lucide="music" class="w-5 h-5"></i>'; lucide.createIcons(); }
-        btn.onclick = () => { isPlaying ? audio.pause() : audio.play(); isPlaying = !isPlaying; updateMusicIcon(); };
+        // --- LÓGICA MÚSICA ---
+        function updateMusicIcon() { musicBtn.innerHTML = isPlaying ? '<i data-lucide="pause" class="w-5 h-5"></i>' : '<i data-lucide="music" class="w-5 h-5"></i>'; lucide.createIcons(); }
+        musicBtn.onclick = () => { isPlaying ? audio.pause() : audio.play(); isPlaying = !isPlaying; updateMusicIcon(); };
 
+        // --- PARTÍCULAS Y OTROS ---
         function createHearts() {
             const container = document.getElementById('heart-container');
             if (!container) return;
