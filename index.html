@@ -545,6 +545,10 @@
                                 <p class="font-serif text-lg md:text-xl text-wedding-text italic leading-relaxed mb-4">
                                     Pero si desean hacernos un regalo, pueden realizar un aporte a través de las siguientes opciones.
                                 </p>
+
+                            <p class="font-sans text-[10px] md:text-xs font-bold text-wedding-olive/80 mt-1">
+        (A través de una plataforma segura de MercadoPago)
+    </p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -754,6 +758,7 @@
         const countdownTitle = document.getElementById('countdown-title');
         const countdownContainer = document.getElementById('countdown');
         let isPlaying = false;
+        let acabaDeConfirmar = false; // Flag para controlar el scroll y la altura
 
         // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
         function toggleMenu() {
@@ -803,7 +808,9 @@
             fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
                 .then(() => {
                     localStorage.setItem('boda_diego_carin_rsvp', 'confirmado');
+                    acabaDeConfirmar = true; // Activamos el flag para el scroll suave
                     showSuccess();
+                    // El cambio de HTML ocurre mientras el popup de éxito está visible
                     setTimeout(mostrarMensajeYaConfirmado, 500);
                 })
                 .catch(error => {
@@ -819,6 +826,11 @@
 
         function mostrarMensajeYaConfirmado() {
             if(!rsvpContainer) return;
+
+            // Bloqueamos la altura actual para que la página no "salte" al borrar el formulario
+            const currentHeight = rsvpContainer.offsetHeight;
+            rsvpContainer.style.minHeight = currentHeight + 'px';
+
             rsvpContainer.innerHTML = `
                 <div class="animate-fade-in-up bg-white p-12 md:p-16 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-wedding-olive/10 text-center">
                     <div class="w-24 h-24 bg-wedding-olive/5 rounded-full flex items-center justify-center mx-auto mb-8">
@@ -831,7 +843,11 @@
                 </div>
             `;
             lucide.createIcons();
-            rsvpContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Si es una recarga (y no una confirmación en vivo), liberamos el min-height de inmediato
+            if (!acabaDeConfirmar) {
+                rsvpContainer.style.minHeight = 'auto';
+            }
         }
 
         function showSuccess() {
@@ -842,7 +858,19 @@
 
         function closePopup() {
             popup.classList.remove('opacity-100');
-            setTimeout(() => popup.classList.add('hidden'), 300);
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                
+                // Si el usuario acaba de confirmar, hacemos el scroll y luego liberamos la altura
+                if (acabaDeConfirmar) {
+                    rsvpContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    setTimeout(() => {
+                        rsvpContainer.style.minHeight = 'auto';
+                        acabaDeConfirmar = false;
+                    }, 800); 
+                }
+            }, 300);
         }
 
         function toggleAsistencia(asiste) {
