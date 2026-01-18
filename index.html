@@ -636,75 +636,80 @@
                 </section>
 
                 <section id="rsvp" class="py-20 md:py-32 bg-wedding-bone text-center px-6 relative z-10">
-                    <div class="max-w-2xl mx-auto">
+                    <div class="max-w-2xl mx-auto" id="rsvp-container">
                         <div class="mb-12">
                             <i data-lucide="mail-check" class="w-10 h-10 text-wedding-olive/30 mx-auto mb-4"></i>
                             <span class="font-script text-5xl md:text-6xl text-wedding-olive block">R.S.V.P.</span>
                             <p class="font-serif text-wedding-earth italic mt-4 text-lg">Confirma tu asistencia por favor</p>
                         </div>
-                        <form id="rsvp-form" class="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-wedding-cream text-left relative overflow-hidden">
-                            <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                                <i data-lucide="heart" class="w-20 h-20 text-wedding-olive"></i>
-                            </div>
+                
+                        <form id="rsvp-form" class="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] shadow-2xl border border-wedding-cream text-left relative overflow-hidden transition-all duration-500">
                             <div class="space-y-8 relative z-10">
                                 <div>
-                                    <label class="block font-serif text-wedding-text text-sm uppercase tracking-widest mb-2 ml-1">Nombre y Apellido</label>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1 text-wedding-text">Nombre y Apellido</label>
                                     <input type="text" name="nombre_principal" required 
-                                        class="w-full border-b border-stone-200 py-3 outline-none focus:border-wedding-olive bg-transparent text-base md:text-lg font-serif transition-colors"
+                                        class="w-full border-b border-stone-200 py-3 outline-none focus:border-wedding-olive bg-transparent text-lg font-serif transition-colors"
                                         placeholder="Tu nombre completo">
                                 </div>
+                
                                 <div>
-                                    <label class="block font-serif text-wedding-text text-sm uppercase tracking-widest mb-4 ml-1">¿Asistirás?</label>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1 text-wedding-text">¿Asistirás?</label>
                                     <div class="grid grid-cols-2 gap-4">
-                                        <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all group">
+                                        <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all">
                                             <input type="radio" name="asistencia" value="si" required class="hidden peer" onchange="toggleAsistencia(true)">
                                             <div class="w-4 h-4 border border-wedding-olive rounded-full mr-3 peer-checked:bg-wedding-olive transition-all"></div>
-                                            <span class="font-serif text-wedding-earth">Sí asistiré</span>
+                                            <span class="font-serif text-wedding-text">Sí, asistiré</span>
                                         </label>
-                                        <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all group">
+                                        <label class="flex items-center justify-center p-4 border border-stone-100 rounded-2xl cursor-pointer hover:bg-wedding-olive/5 transition-all">
                                             <input type="radio" name="asistencia" value="no" class="hidden peer" onchange="toggleAsistencia(false)">
                                             <div class="w-4 h-4 border border-wedding-olive rounded-full mr-3 peer-checked:bg-wedding-olive transition-all"></div>
-                                            <span class="font-serif text-wedding-earth">No podré asistir</span>
+                                            <span class="font-serif text-wedding-text">No podré</span>
                                         </label>
                                     </div>
                                 </div>
-                                <div id="section-si" class="hidden space-y-8 pt-4 border-t border-stone-50 animate-fade-in-up">
+                
+                                <div id="section-si" class="hidden space-y-8 pt-4 border-t border-stone-50">
                                     <div class="flex items-center justify-between p-4 bg-wedding-bone/50 rounded-2xl">
-                                        <label class="font-serif text-wedding-text italic text-lg">¿Confirmarás por alguien más?</label>
+                                        <label class="font-serif italic text-lg text-wedding-text">¿Confirmas por alguien más?</label>
                                         <input type="checkbox" id="confirmar-mas" class="w-6 h-6 accent-wedding-olive cursor-pointer" onchange="toggleAcompanantes(this.checked)">
                                     </div>
-                                    <div id="wrapper-cantidad" class="hidden animate-fade-in-up">
-                                        <label class="block font-serif text-wedding-text text-sm uppercase tracking-widest mb-4 ml-1">¿Cuántos adicionales?</label>
+                                    
+                                    <div id="wrapper-cantidad" class="hidden">
+                                        <label class="block font-serif text-xs uppercase tracking-widest mb-4 ml-1 text-wedding-text">¿Cuántos adicionales?</label>
                                         <div class="grid grid-cols-4 gap-2">
                                             <button type="button" onclick="generateInputs(1)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">1</button>
                                             <button type="button" onclick="generateInputs(2)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">2</button>
                                             <button type="button" onclick="generateInputs(3)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">3</button>
                                             <button type="button" onclick="generateInputs(4)" class="num-btn py-3 border border-wedding-olive/20 rounded-xl font-serif hover:bg-wedding-olive hover:text-white transition-all">4</button>
                                         </div>
+                                        <div id="nombres-adicionales-container" class="mt-6 space-y-4"></div>
                                     </div>
-                                    <div id="nombres-adicionales-container" class="space-y-4"></div>
                                 </div>
-                                <div id="section-mensaje" class="space-y-4 pt-4">
-                                    <label class="block font-serif text-wedding-text text-sm uppercase tracking-widest mb-2 ml-1">Mensaje para los novios</label>
-                                    <textarea name="mensaje" rows="3" 
-                                        class="w-full border-b border-stone-200 py-2 outline-none focus:border-wedding-olive bg-transparent text-base font-serif transition-colors resize-none"
-                                        placeholder="Déjanos unas palabras..."></textarea>
+                
+                                <div>
+                                    <label class="block font-serif text-xs uppercase tracking-widest mb-2 ml-1 text-wedding-text">Mensaje para los novios</label>
+                                    <textarea name="mensaje" rows="3" class="w-full border-b border-stone-200 py-2 outline-none focus:border-wedding-olive bg-transparent font-serif transition-colors resize-none" placeholder="Déjanos unas palabras..."></textarea>
                                 </div>
-                                <button type="submit" id="submit-btn" 
-                                    class="w-full bg-wedding-olive text-white py-5 rounded-full font-serif uppercase tracking-[0.2em] text-[10px] md:text-xs shadow-xl hover:bg-wedding-sage transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
-                                    <span>Confirmar</span>
-                                    <i data-lucide="send" class="w-4 h-4"></i>
+                
+                                <button type="submit" id="submit-btn" class="w-full bg-wedding-olive text-white py-5 rounded-full font-serif uppercase tracking-widest text-xs shadow-xl flex items-center justify-center gap-2">
+                                    <span id="btn-text">Confirmar Asistencia</span>
+                                    <div id="btn-loader" class="loader hidden"></div>
                                 </button>
-                            </div>
-                            <div id="success-msg" class="hidden absolute inset-0 bg-white/95 flex flex-col items-center justify-center text-center p-8 z-20">
-                                <i data-lucide="check-circle" class="w-16 h-16 text-wedding-olive mb-4"></i>
-                                <h3 class="font-serif text-2xl text-wedding-text mb-2">¡Registro completado!</h3>
-                                <p class="font-serif text-wedding-earth italic">Tu respuesta se ha guardado correctamente.</p>
-                                <button type="button" onclick="location.reload()" class="mt-6 text-wedding-olive uppercase text-[10px] tracking-widest underline">Enviar otra respuesta</button>
                             </div>
                         </form>
                     </div>
                 </section>
+                
+                <div id="popup-overlay" class="fixed inset-0 z-[500] bg-black/40 backdrop-blur-sm flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+                    <div class="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl text-center max-w-sm mx-4 animate-pop-in">
+                        <div class="w-20 h-20 bg-wedding-olive/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="check-circle" class="w-12 h-12 text-wedding-olive"></i>
+                        </div>
+                        <h3 class="font-script text-5xl text-wedding-olive mb-4 leading-tight">Confirmación Exitosa</h3>
+                        <div class="h-2 w-12 bg-wedding-olive/20 mx-auto mb-8 rounded-full"></div>
+                        <button onclick="closePopup()" class="w-full py-4 bg-wedding-olive text-white rounded-full font-serif uppercase tracking-widest text-[10px] shadow-lg">Cerrar</button>
+                    </div>
+                </div>
 
                 <section class="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-wedding-bone">
                     <img src="ImagenFinal.jpg" alt="Diego y Carin" class="absolute inset-0 w-full h-full object-cover z-0 scale-105">
