@@ -861,14 +861,20 @@
             setTimeout(() => {
                 popup.classList.add('hidden');
                 
-                // Si el usuario acaba de confirmar, hacemos el scroll y luego liberamos la altura
                 if (acabaDeConfirmar) {
-                    rsvpContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Buscamos la tarjeta de "Gracias" que está dentro del contenedor
+                    const tarjetaGracias = rsvpContainer.querySelector('.animate-fade-in-up');
                     
+                    if (tarjetaGracias) {
+                        // Centramos la TARJETA, no el contenedor con min-height
+                        tarjetaGracias.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    
+                    // Esperamos a que termine el scroll para limpiar el min-height
                     setTimeout(() => {
                         rsvpContainer.style.minHeight = 'auto';
                         acabaDeConfirmar = false;
-                    }, 800); 
+                    }, 1000); 
                 }
             }, 300);
         }
