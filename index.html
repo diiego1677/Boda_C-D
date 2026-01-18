@@ -35,11 +35,26 @@
                         'fade-in-up': 'fadeInUp 1s ease-out forwards',
                         'heart-float': 'heartFloat 3s ease-out forwards',
                         'spin-slow': 'spin 8s linear infinite',
+                        // NUEVA ANIMACIÓN TIPO PELÍCULA
+                        'movie-in': 'movieEntrance 1.6s cubic-bezier(0.23, 1, 0.32, 1) forwards',
                     },
                     keyframes: {
                         grandEntrance: { '0%': { opacity: '0', transform: 'scale(1.5) translateY(-30px) rotateX(15deg)', filter: 'blur(15px)' }, '100%': { opacity: '1', transform: 'scale(1) translateY(0) rotateX(0deg)', filter: 'blur(0px)' } },
                         fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        heartFloat: { '0%': { opacity: '0', transform: 'translate(0, 0) scale(0)' }, '20%': { opacity: '1', transform: 'translate(var(--tx), var(--ty)) scale(1)' }, '100%': { opacity: '0', transform: 'translate(var(--end-tx), var(--end-ty)) scale(0.5)' } }
+                        heartFloat: { '0%': { opacity: '0', transform: 'translate(0, 0) scale(0)' }, '20%': { opacity: '1', transform: 'translate(var(--tx), var(--ty)) scale(1)' }, '100%': { opacity: '0', transform: 'translate(var(--end-tx), var(--end-ty)) scale(0.5)' } },
+                        // KEYFRAMES PARA EL EFECTO DE CINE
+                        movieEntrance: {
+                            '0%': { 
+                                opacity: '0', 
+                                transform: 'translateX(100%) scale(2.5) rotate(15deg)', 
+                                filter: 'blur(12px)' 
+                            },
+                            '100%': { 
+                                opacity: '1', 
+                                transform: 'translateX(0) scale(1) rotate(-2deg)', 
+                                filter: 'blur(0px)' 
+                            }
+                        }
                     }
                 }
             }
@@ -289,6 +304,8 @@
                  <p class="mt-6 md:mt-8 font-sans text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-wedding-olive font-semibold">- Cantar de los cantares 8:7</p>
              </div>
          </section>
+         
+         
 
         <section id="sesion-fotos" class="relative py-24 md:py-48 bg-wedding-bone overflow-hidden flex flex-col items-center">
             <div class="section-mask-top"></div>
@@ -713,9 +730,46 @@
                     </div>
                 </section>
 
+               <section id="fotos-evento" class="py-20 md:py-32 bg-wedding-bone text-center px-6 relative z-10 overflow-hidden">
+                    <div class="max-w-4xl mx-auto gift-card opacity-0 translate-y-10 transition-all duration-1000">
+                        <div class="mb-12">
+                            <div class="inline-block p-3 rounded-full bg-wedding-olive/5 mb-4">
+                                <i data-lucide="camera" class="w-8 h-8 text-wedding-olive/40"></i>
+                            </div>
+                            <span class="font-script text-5xl md:text-6xl text-wedding-sage block">Fotos de la boda</span>
+                        </div>
+
+                        <div class="relative max-w-2xl mx-auto">
+                            <div class="relative bg-white/40 backdrop-blur-sm border border-white p-12 md:p-24 rounded-[2.5rem] md:rounded-[4rem] shadow-inner overflow-hidden flex flex-col items-center justify-center">
+                                
+                                <div id="texto-proximamente" class="relative z-20 opacity-0">
+                                    <span class="font-serif text-4xl md:text-6xl text-wedding-olive uppercase tracking-[0.2em] font-bold drop-shadow-md block">
+                                        ¡Próximamente!
+                                    </span>
+                                    <div class="h-1 w-full bg-wedding-olive/20 mt-2 rounded-full"></div>
+                                </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
+                                    <i data-lucide="image" class="w-40 h-40 md:w-64 md:h-64 text-wedding-text"></i>
+                                </div>
+                            </div>
+
+                            <div class="mt-10 md:mt-14 px-4">
+                                <p class="font-serif text-lg md:text-2xl text-wedding-text italic leading-relaxed">
+                                    "Esta sección estará disponible luego de la boda."
+                                </p>
+                                <p class="font-sans text-[10px] md:text-xs uppercase tracking-[0.3em] text-wedding-olive/60 mt-4 font-semibold">
+                                    Para que revivas con nosotros los mejores momentos
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section class="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-wedding-bone">
                     <img src="ImagenFinal.jpg" alt="Diego y Carin" class="absolute inset-0 w-full h-full object-cover z-0 scale-105">
                     <div class="absolute inset-0 bg-black/30 z-10"></div>
+                    ```
                     <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-wedding-bone to-transparent z-20 pointer-events-none"></div>
                     <div class="relative z-30 px-6 max-w-4xl">
                         <h2 class="font-serif text-2xl md:text-5xl text-white italic leading-relaxed drop-shadow-lg opacity-0 translate-y-10 transition-all duration-1000 itinerary-item">
@@ -918,6 +972,14 @@
                         } else if (entry.target.classList.contains('gift-card')) {
                             entry.target.classList.remove('opacity-0', 'translate-y-10');
                             entry.target.classList.add('opacity-100', 'translate-y-0');
+                            
+                            // NUEVO: Disparar la animación del "Próximamente" solo cuando se vea la sección
+                            const textoProximamente = entry.target.querySelector('#texto-proximamente');
+                            if (textoProximamente) {
+                                setTimeout(() => {
+                                    textoProximamente.classList.add('animate-movie-in');
+                                }, 600); // Espera 0.6 segundos después de que aparece el recuadro blanco
+                            }
                         }
                         observer.unobserve(entry.target);
                     }
@@ -925,6 +987,8 @@
             };
             const mainObserver = new IntersectionObserver(revealCallback, observerOptions);
             document.querySelectorAll('.itinerary-item, .gift-card').forEach(item => { mainObserver.observe(item); });
+            
+            // ... (el resto del código de polaroidObserver se mantiene igual)
 
             const polaroidObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
